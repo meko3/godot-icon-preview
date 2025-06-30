@@ -26,14 +26,13 @@ func _ready() -> void:
 			
 func _on_item_selected(index: int, itemList: ItemList) -> void:
 	var name = itemList.get_item_text(index)
-	DisplayServer.clipboard_set(name)
-	show_notification("Copied " + name)
+	var parts = name.split(":")
+	var quoted_parts = Array(parts).map(func(p): return '"' + p + '"')
+	var result = ", ".join(quoted_parts)
+	DisplayServer.clipboard_set(result)
+	show_notification("Copied " + result)
 
 func show_notification(text: String, duration: float = 2.0) -> void:
-	var parts = text.split(":")
-	var result = ""
-	for part in parts:
-		result += '"' + part + '"' + ", "
-	label.text = result
+	label.text = text
 	label.visible = true
 	timer.start(3)
