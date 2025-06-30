@@ -2,4 +2,4 @@
 
 For Godot4.4.1+
 
-![Demo scene](.github/assets/screenshot.jpg)
+![Demo scene](.github/assets/screenshot.png)
